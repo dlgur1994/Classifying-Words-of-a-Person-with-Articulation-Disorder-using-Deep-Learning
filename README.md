@@ -1,4 +1,7 @@
 # Classifying Words of a Person with Articulation Disorder
+
+(New Version In Progress)
+
 1. Data
 - 9 words
     - 뉴스(news), 리모컨(remote controller), 소리크게(volume up), 소리작게(volume down), 시간(time), 오늘일정(today schedule), 오늘날씨(today weather), 지니야(genie), 클로바(clova)
