@@ -10,16 +10,21 @@
 - Train / Test = 72:18 = 0.8:0.2
 
 2. Data Preprocessing
-- files changed
+- change files
     - raw -> to_wav -> separated
-        - ex) clover70.m4a -> clover70.wav -> clover_0.wav ~ clover_69.wav
-> |Data|Format|Audio Channel|Sample Rate|Bit per Sample|Encoding|
-> |---|---|---|---|---|---|
-> |raw|m4a|mono|44.1 kHz|16 bit|.|
-> |to_wav|wav|mono|44.1 kHz|16 bit|pcm|
-> |separated|wav|mono|44.1 kHz|16 bit|pcm|
+        - clover70.m4a -> clover70.wav: online converter(https://convertio.co/m4a-wav/)
+        - clover70.wav -> clover_0.wav ~ clover_69.wav: cut them one by one with 'WavePad'
+    > |Data|Format|Audio Channel|Sample Rate|Bit per Sample|Encoding|
+    > |---|---|---|---|---|---|
+    > |raw|m4a|mono|44.1 kHz|16 bit|.|
+    > |to_wav|wav|mono|44.1 kHz|16 bit|pcm|
+    > |separated|wav|mono|44.1 kHz|16 bit|pcm|
 - extract features
-    - use MFCC
+    - ExtractFeature.py
+    - extract MFCC
+        - n_mfcc = 13 -> for speech recognition, 13 mfcc features are usually used.
+    - normalize MFCC features
+    - make the length of input same
     - store features into a npz file
 
 3. Train
