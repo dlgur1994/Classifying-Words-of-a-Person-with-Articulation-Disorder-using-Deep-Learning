@@ -8,11 +8,11 @@
 - Train / Test = 72:18 = 0.8:0.2
 
 2. Data Preprocessing
-> |Data|Format|Audio Channel|Sample Rate|Bit per Sample|Encoding|
-> |---|---|---|---|---|---|
-> |raw|mp4|mono|44.1 kHz|16 bit||
-> |to_wav|wav|mono|44.1 kHz|16 bit|pcm|
-> |separated|wav|mono|44.1 kHz|16 bit|pcm|
+|Data|Format|Audio Channel|Sample Rate|Bit per Sample|Encoding|
+|---|---|---|---|---|---|
+|raw|mp4|mono|44.1 kHz|16 bit||
+|to_wav|wav|mono|44.1 kHz|16 bit|pcm|
+|separated|wav|mono|44.1 kHz|16 bit|pcm|
 
 - why wav? 
     - The wav format is uncompressed, being an exact copy of t he source audio
