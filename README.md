@@ -22,8 +22,7 @@
 - extract features
     - ExtractFeature.py
     - extract MFCC
-        - n_mfcc = 13 -> for speech recognition, 13 mfcc features are usually used.
-    - normalize MFCC features
+        - n_mfcc = 13 -> for speech recognition, 13 mfcc features are usually used
     - make the length of input same
     - store features into a npz file
 
