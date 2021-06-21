@@ -8,22 +8,14 @@
 - Train / Test = 72:18 = 0.8:0.2
 
 2. Data Preprocessing
-- raw: .m4a
-    - audio channels: mono
-    - sample rate: 44.1 kHz
-    - bit per sample: 16 bit
-- wav: .wav
-    - encoding: pcm
-    - channels: mono
-    - sample rate: 44.1 kHz
-    - bit per sample: 16 bit
-    - why wav? 
+> |Data|Format|Audio Channel|Sample Rate|Bit per Sample|Encoding|
+> |---|---|---|---|---|---|
+> |raw|mp4|mono|44.1 kHz|16 bit||
+> |to_wav|wav|mono|44.1 kHz|16 bit|pcm|
+> |separated|wav|mono|44.1 kHz|16 bit|pcm|
+
+- why wav? 
     - The wav format is uncompressed, being an exact copy of t he source audio
-- separated: .wav
-    - encoding: pcm
-    - channels: mono
-    - sample rate: 44.1 kHz
-    - sample size: 16 bit
 - extract features
     - use MFCC
     - store features into a npz file
