@@ -20,11 +20,12 @@
     > |to_wav|wav|mono|44.1 kHz|16 bit|pcm|
     > |separated|wav|mono|44.1 kHz|16 bit|pcm|
 - extract features
-    - ExtractFeature.py
     - extract MFCC
-        - n_mfcc = 13 -> for speech recognition, 13 mfcc features are usually used
+        - ExtractFeature.py
+        - 13 mfcc features are usually used for speech recognition
     - make the length of input same
     - store features into a npz file
+    - store labels into a npz file
 
 3. Train
 

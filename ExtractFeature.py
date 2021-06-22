@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from numpy.lib.npyio import NpzFile
 import sklearn
 import librosa
 import librosa.display
@@ -12,7 +13,8 @@ def extract_feature(file, sec):
     # extract MFCC feature
     # n_fft: the length of a frame, hop_length: gap between two frames 
     mfcc = librosa.feature.mfcc(X, n_mfcc=13, n_fft=int(sample_rate*0.025), hop_length=int(sample_rate*0.01))
-    print(mfcc.shape)
+    # print(mfcc.shape)
+    # print(mfcc)
     
     # adjust input size consistently
     pad2d = lambda a, i: a[:, 0:i] if a.shape[1] > i else np.hstack(a, np.zeros(a.shape[0], i-a.shape[1]))
@@ -20,8 +22,7 @@ def extract_feature(file, sec):
     # plt.figure(figsize=(16,6))
     # librosa.display.specshow(mfcc_padded, sr=sample_rate, x_axis='time')
     # plt.show()
-    # return mfcc_padded.T
-    return mfcc_padded.T
+    return mfcc_padded
 
 category_name = 'clover'
 origin_file_path = '/Users/m/Desktop/recordings2/final/'
@@ -32,14 +33,10 @@ feature_length_time = 1
 for i in range(0, n_files):
     all_mfccs = []
     file = (origin_file_path + category_name + '/%d.wav'%i)
-    all_mfccs = np.ndarray(shape=[0,13], dtype = np.float32)
     
     # extract feature
     feature = extract_feature(file, feature_length_time) 
-    
-    # append all MFCC features
-    all_mfccs = np.append(all_mfccs, feature, axis=0)
 
     # save MFCC features
-    np.savez(save_file_path + category_name + '/%d'%i, X = all_mfccs) 
+    np.savez(save_file_path + category_name + '/%d'%i, X = feature) 
     print(i,"file done")
