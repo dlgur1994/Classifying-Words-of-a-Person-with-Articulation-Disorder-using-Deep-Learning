@@ -1,9 +1,7 @@
 import numpy as np
-import matplotlib.pyplot as plt
-from numpy.lib.npyio import NpzFile
-import sklearn
 import librosa
 import librosa.display
+import matplotlib.pyplot as plt
 
 def extract_feature(file, sec):
     X, sample_rate = librosa.load(file)
@@ -25,18 +23,20 @@ def extract_feature(file, sec):
     return mfcc_padded
 
 category_name = 'clover'
-origin_file_path = '/Users/m/Desktop/recordings2/final/'
-save_file_path = '/Users/m/Desktop/recordings2/train/'
+origin_file_path = '/Users/m/Desktop/recordings2/separated/'
+save_file_path = '/Users/m/Desktop/recordings2/npz/'
 n_files = 1
 feature_length_time = 1
+all_mfccs = []
 
 for i in range(0, n_files):
     all_mfccs = []
-    file = (origin_file_path + category_name + '/%d.wav'%i)
+    file = (origin_file_path + category_name + '/' + str(i) + '.wav')
     
     # extract feature
-    feature = extract_feature(file, feature_length_time) 
+    feature = extract_feature(file, feature_length_time)
+    all_mfccs.append(feature)
 
-    # save MFCC features
-    np.savez(save_file_path + category_name + '/%d'%i, X = feature) 
-    print(i,"file done")
+# save MFCC features
+np.savez(save_file_path + category_name, X = all_mfccs) 
+print(category_name + " done")
