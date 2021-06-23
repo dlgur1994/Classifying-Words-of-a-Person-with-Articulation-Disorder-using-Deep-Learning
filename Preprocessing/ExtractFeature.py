@@ -16,6 +16,7 @@ def extract_feature(file, sec):
     # print('Audio length (seconds): %.2f' % (len(X) / sample_rate))
     
     # extract MFCC feature
+    # n_mfcc=13: features are usually used for speech recognition
     # n_fft: the length of a frame, hop_length: gap between two frames 
     mfcc = librosa.feature.mfcc(X, n_mfcc=13, n_fft=int(sample_rate*0.025), hop_length=int(sample_rate*0.01))
 
