@@ -3,11 +3,11 @@
 (New Version In Progress)
 
 1. Data
-- 9 words
+- 9 words, 89 each 
     - 뉴스(news), 리모컨(remote controller), 소리크게(volume up), 소리작게(volume down), 시간(time), 오늘일정(today schedule), 오늘날씨(today weather), 지니야(genie), 클로바(clova)
 - why wav format? 
     - The wav format is uncompressed, being an exact copy of the source audio
-- Train / Test = 72:18 = 0.8:0.2
+- Train / Test = 72:17 = 0.81:0.19
 
 2. Data Preprocessing
 - change files
@@ -20,19 +20,23 @@
     > |to_wav|wav|mono|44.1 kHz|16 bit|pcm|
     > |separated|wav|mono|44.1 kHz|16 bit|pcm|
 - make train/test data
+    - RenameFiles.py
+        - rename separated raw data files on the local machine
+    - DivideTrainTest.py
+        - divide files into trian files and test files on the local machine
     - ExtractFeature.py
         - extract MFCC features
-            - 13 mfcc features are usually used for speech recognition
         - decide the length of input same
+        - normalize MFCC feature values to values between 0 and 1
         - store features into a npz file
-    - CombineFeatureFiles.py
-        - combine all npz files into one npz file.
+    - MakeXFeatures.py
+        - combine all npz files into one npz file for train and test.
     - MakeLables.py
-        - make y labels
-            - 9 classes 90 times
+        - make y labels for train and test
 
 3. Train
-- CNN
+- CNN.ipynb
+    - use the CNN algorithm to classify data that has been changed into images
 
 4. Test
 
