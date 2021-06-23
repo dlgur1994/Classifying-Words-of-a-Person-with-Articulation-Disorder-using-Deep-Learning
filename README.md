@@ -34,10 +34,10 @@
     - MakeLables.py
         - make y labels for train and test
 
-3. Train
+3. Train & Test
 - CNN.ipynb
     - use the CNN algorithm to classify data that has been changed into images
 
-4. Test
-
-5. Results
+4. Results
+- The classification accuracy for version 1 with three layers of MLP was 75.56%
+- Version 2 with CNN has a classification accuracy of **98.46%**
