@@ -31,6 +31,11 @@
         - combine all npz files into one npz file for train and test.
     - MakeLables.py
         - make y labels for train and test
+- Data
+    - Data/test_X.npz
+    - Data/test_y.npz
+    - Data/train_X.npz
+    - Data/train_y.npz
 
 3. Train & Test
 - CNN.ipynb
