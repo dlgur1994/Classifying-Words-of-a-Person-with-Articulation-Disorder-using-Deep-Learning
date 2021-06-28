@@ -43,7 +43,9 @@
 - Train.ipynb
     - use the CNN algorithm to classify data that has been changed into images
     - The classification accuracy for version 1 with three layers of MLP was 75.56%
-    - Version 2 with CNN has a classification accuracy of **96.08%**
+    - Version 2 with CNN has a classification accuracy of **96.08%**</br>
+    ![graph_image](./Images/graph.png)
+    ![result_image](./Images/result.png)
 
 4. Test
 - Test.ipynb
