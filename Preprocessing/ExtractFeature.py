@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import librosa
 from sklearn.preprocessing import minmax_scale
@@ -31,52 +32,47 @@ def extract_feature(file, sec):
     # plt.show()
     return mfcc_padded
 
-train_file_path = '/Users/m/Desktop/Data/4_train/wav/'
-val_file_path = '/Users/m/Desktop/Data/5_validation/wav/'
-test_file_path = '/Users/m/Desktop/Data/6_test/wav/'
-train_save_path = '/Users/m/Desktop/Data/4_train/npzs/'
-val_save_path = '/Users/m/Desktop/Data/5_validation/npzs/'
-test_save_path = '/Users/m/Desktop/Data/6_test/npzs/'
+def saveNpz(file_num, file_path, category, feature, mfccs, save_path, whatis):
+    # make train npz files
+    for i in range(0, file_num):
+        file = (file_path + category + '/' + str(i) + '.wav')
+        # extract feature
+        feature = extract_feature(file, FEATURE_LENGTH_TIME)
+        mfccs.append(feature)
+    # save MFCC features
+    np.savez(save_path + category, X = mfccs) 
+    print(category + " " + whatis + " done")
+
+file_formats = ['wav/', 'npzs/']
+folder_names = ['4_train/', '5_validation/', '6_test/']
+file_path = '/Users/m/Desktop/Data/'
 categories = ['clover', 'genie', 'news', 'remotecontroller', 'time', 'todayschedule', 'todayweather', 'volumedown', 'volumeup']
 train_file_num = 55
 val_file_num = 17
 test_file_num = 17
-feature_length_time = 23
+FEATURE_LENGTH_TIME = 23
+
+# define file paths
+train_file_path = file_path + folder_names[0] + file_formats[0]
+val_file_path = file_path + folder_names[1] + file_formats[0]
+test_file_path = file_path + folder_names[2] + file_formats[0]
+train_save_path = file_path + folder_names[0] + file_formats[1]
+val_save_path = file_path + folder_names[1] + file_formats[1]
+test_save_path = file_path + folder_names[2] + file_formats[1]
+
+# make directories
+for fm in file_formats:
+    for fn in folder_names:
+        if not os.path.exists(file_path+fn):
+            os.mkdir(file_path+fn)
+        if not os.path.exists(file_path+fn+fm):
+            os.mkdir(file_path+fn+fm)
 
 for category in categories:
-    train_feature = None
-    val_feature = None
-    test_feature = None
-    train_mfccs = []
-    val_mfccs = []
-    test_mfccs = []
-
-    # make train npz files
-    for i in range(0, train_file_num):
-        train_file = (train_file_path + category + '/' + str(i) + '.wav')
-        # extract feature
-        train_feature = extract_feature(train_file, feature_length_time)
-        train_mfccs.append(train_feature)
-    # save MFCC features
-    np.savez(train_save_path + category, X = train_mfccs) 
-    print(category + " train done")
-
-    # make validation npz files
-    for i in range(0, val_file_num):
-        val_file = (val_file_path + category + '/' + str(i) + '.wav')
-        # extract feature
-        val_feature = extract_feature(val_file, feature_length_time)
-        val_mfccs.append(val_feature)
-    # save MFCC features
-    np.savez(val_save_path + category, X = val_mfccs) 
-    print(category + " validation done")
-
-    # make test npz files
-    for i in range(0, test_file_num):
-        test_file = (test_file_path + category + '/' + str(i) + '.wav')
-        # extract feature
-        test_feature = extract_feature(test_file, feature_length_time)
-        test_mfccs.append(test_feature)
-    # save MFCC features
-    np.savez(test_save_path + category, X = test_mfccs) 
-    print(category + " test done")
+    train_feature, val_feature, test_feature = None, None, None
+    train_mfccs, val_mfccs, test_mfccs = [], [], []
+    
+    # make npz files
+    saveNpz(train_file_num, train_file_path, category, train_feature, train_mfccs, train_save_path, 'train')
+    saveNpz(val_file_num, val_file_path, category, val_feature, val_mfccs, val_save_path, 'val')
+    saveNpz(test_file_num, test_file_path, category, test_feature, test_mfccs, test_save_path, 'test')
