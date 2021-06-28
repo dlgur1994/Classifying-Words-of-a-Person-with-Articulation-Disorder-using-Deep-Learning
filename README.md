@@ -5,7 +5,6 @@
     - 뉴스(news), 리모컨(remote controller), 소리크게(volume up), 소리작게(volume down), 시간(time), 오늘일정(today schedule), 오늘날씨(today weather), 지니야(genie), 클로바(clova)
 - why wav format? 
     - The wav format is uncompressed, being an exact copy of the source audio
-<!-- - Train / Test = 72:17 = 0.81:0.19 -->
 - Train / Validation / Test = 55:17:17 = 0.6:0.2:0.2
 
 2. Data Preprocessing
@@ -21,8 +20,6 @@
 - make train/test data
     - RenameFiles.py
         - rename separated raw data files on the local machine
-    <!-- - DivideTrainTest.py
-        - divide files into trian files and test files on the local machine -->
     - DivideTrainValTest.py
         - divide files into trian files, validation files and test files on the local machine
     - ExtractFeature.py
@@ -42,10 +39,12 @@
     - Data/val_X.npz
     - Data/val_y.npz
 
-3. Train & Test
+3. Train
 - Train.ipynb
     - use the CNN algorithm to classify data that has been changed into images
+    - The classification accuracy for version 1 with three layers of MLP was 75.56%
+    - Version 2 with CNN has a classification accuracy of **96.08%**
 
-4. Results
-- The classification accuracy for version 1 with three layers of MLP was 75.56%
-- Version 2 with CNN has a classification accuracy of **96.08%**
+4. Test
+- Test.ipynb
+    - confirm the result by input the test speech data into the trained model
