@@ -48,3 +48,4 @@
 4. Test
 - Test.ipynb
     - confirm the result by input the test speech data into the trained model
+    ![test_image](../Images/test.png)
