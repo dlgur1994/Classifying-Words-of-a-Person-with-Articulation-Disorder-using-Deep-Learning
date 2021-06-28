@@ -31,7 +31,7 @@ for category in categories:
         os.mkdir(test_file_path+category)
     
     for file_name in file_names:
-        if file_name == 'DS_Store':
+        if file_name == '.DS_Store':
             continue
         elif (cnt%5 == 0 and cnt<85): # store as a test file
             storeFiles(file_path, file_name, test_cnt, test_file_path, category)
