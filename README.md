@@ -53,3 +53,7 @@ This is a project to classify the voices of a person with articulation disorder 
 - Test.ipynb
     - confirm the result by input the test speech data into the trained model</br>
     ![test_image](./Images/test.png)
+
+5. Publication
+- 2019 Korea Computer Congress (KCC), Jeju, Korea
+- https://github.com/dlgur1994/Classifying-Words-of-a-Person-with-Articulation-Disorder-using-Deep-Learning/blob/main/Publication/조음%20장애인들의%20음성인식을%20위한%20AI%20어플리케이션.pdf
